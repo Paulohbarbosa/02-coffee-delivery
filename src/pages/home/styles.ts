@@ -1,10 +1,15 @@
 import { styled } from 'styled-components'
 
+import back from '../../assets/Background.svg'
+
 export const IntroContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 5.8rem 10rem;
   gap: 3.5rem;
+  background-image: url(${back});
+  background-position: center;
+  background-size: contain;
 `
 
 export const TitleContainer = styled.div`

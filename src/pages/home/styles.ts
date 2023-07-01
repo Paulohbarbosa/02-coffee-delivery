@@ -2,6 +2,10 @@ import { styled } from 'styled-components'
 
 import back from '../../assets/Background.svg'
 
+export const HomeContainer = styled.body`
+  padding: 5.8rem 10rem;
+`
+
 export const IntroContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -54,25 +58,22 @@ export const ItemsContainer = styled.div`
     display: flex;
     align-items: center;
   }
-
-  /* i {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: 50%;
-    color: white;
-    background-color: blue;
-  } */
-
   span {
     width: 16rem;
     margin-left: 0.5rem;
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     font-family: 400;
+  }
+`
+export const AreaCardContainer = styled.div`
+  padding: 2rem 10rem;
+
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: ${(props) => props.theme['base-subtitle']};
+    margin-bottom: 3.37rem;
   }
 `

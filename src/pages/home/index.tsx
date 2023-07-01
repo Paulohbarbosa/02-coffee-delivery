@@ -1,11 +1,13 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import imagePresentation from '../../assets/coffee-home.png'
 import {
+  AreaCardContainer,
   IconsContainer,
   IntroContainer,
   ItemsContainer,
   TitleContainer,
 } from './styles'
+import { Card } from '../../components/Card'
 
 export function Home() {
   return (
@@ -50,6 +52,10 @@ export function Home() {
           <img src={imagePresentation} alt="" />
         </div>
       </IntroContainer>
+      <AreaCardContainer>
+        <h1>Nossos cafés</h1>
+        <Card />
+      </AreaCardContainer>
     </>
   )
 }

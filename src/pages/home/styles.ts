@@ -49,9 +49,8 @@ export const IconsContainer = styled.i<IconsProps>`
 `
 export const ItemsContainer = styled.div`
   margin: 4rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 230px 1fr;
   gap: 1rem;
 
   div {
@@ -59,7 +58,6 @@ export const ItemsContainer = styled.div`
     align-items: center;
   }
   span {
-    width: 16rem;
     margin-left: 0.5rem;
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;

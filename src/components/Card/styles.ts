@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: 16rem; //deveria ser 16
+  width: 15rem; //deveria ser 16
   /* height: 19.375rem; */
   background-color: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
@@ -54,10 +54,11 @@ export const LabelCard = styled.span`
   margin-bottom: 2rem;
 `
 export const BuyContainer = styled.div`
-  width: 13.5rem;
+  width: 12rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 
   div {
     display: flex;

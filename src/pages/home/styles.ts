@@ -9,7 +9,7 @@ export const HomeContainer = styled.body`
 export const IntroContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 5.8rem 10rem;
+  padding: 2rem 10rem; //5 e 10 rem
   gap: 3.5rem;
   background-image: url(${back});
   background-position: center;
@@ -74,4 +74,11 @@ export const AreaCardContainer = styled.div`
     color: ${(props) => props.theme['base-subtitle']};
     margin-bottom: 3.37rem;
   }
+`
+
+export const AreaCards = styled.div`
+  width: 70rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 `

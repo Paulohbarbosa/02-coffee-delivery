@@ -1,5 +1,5 @@
 import { ShoppingCartSimple } from 'phosphor-react'
-import coffee from '../../assets/caffee.png'
+import coffee from '../../assets/coffees/expresso.png'
 import {
   BuyContainer,
   CardContainer,
@@ -10,20 +10,30 @@ import {
 } from './styles'
 import { Counter } from '../Counter'
 
-export function Card() {
+interface CardProps {
+  img: string
+  tags: [{ content: string }]
+  name: string
+  description: string
+  value: string
+}
+
+export function Card({ img, tags, name, description, value }: CardProps) {
   return (
     <CardContainer>
-      <img src={coffee} alt="" />
+      <img src={img} alt="" />
       <CategoryContainer>
-        <Category>tradicional</Category>
+        {tags.map((tag) => {
+          return <Category key={tag.content}>{tag.content}</Category>
+        })}
       </CategoryContainer>
-      <SubtitleCard>Expresso tradicional</SubtitleCard>
-      <LabelCard>O tradicional café feito água quente e grãos moídos</LabelCard>
+      <SubtitleCard>{name}</SubtitleCard>
+      <LabelCard>{description}</LabelCard>
       <form action="">
         <BuyContainer>
           <div>
             <strong>R$</strong>
-            <span>9.90</span>
+            <span>{value}</span>
           </div>
           <Counter />
           <button name="carrinho" type="submit">

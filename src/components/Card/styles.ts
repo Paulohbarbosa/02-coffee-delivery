@@ -1,14 +1,15 @@
 import { styled } from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: 15rem; //deveria ser 16
-  /* height: 19.375rem; */
+  width: 16rem; //deveria ser 16
+  height: 19.375rem;
   background-color: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
 
   img {
     margin-top: -50px;

@@ -2,11 +2,12 @@ import { styled } from 'styled-components'
 
 import back from '../../assets/Background.svg'
 
-export const HomeContainer = styled.body`
-  padding: 5.8rem 10rem;
-`
+// export const HomeContainer = styled.body`
+//   padding: 5.8rem 10rem;
+// `
 
 export const IntroContainer = styled.div`
+  margin-top: 8rem;
   display: flex;
   flex-direction: row;
   padding: 2rem 10rem; //5 e 10 rem
@@ -81,4 +82,5 @@ export const AreaCards = styled.div`
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 10rem;
 `

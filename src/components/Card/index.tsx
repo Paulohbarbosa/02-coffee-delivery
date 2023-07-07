@@ -1,12 +1,14 @@
 import { ShoppingCartSimple } from 'phosphor-react'
-import coffee from '../../assets/coffees/expresso.png'
 import {
+  ButtonBuy,
   BuyContainer,
   CardContainer,
   Category,
   CategoryContainer,
+  CounterBuyContainer,
   LabelCard,
   SubtitleCard,
+  ValueBuyContainer,
 } from './styles'
 import { Counter } from '../Counter'
 
@@ -31,14 +33,16 @@ export function Card({ img, tags, name, description, value }: CardProps) {
       <LabelCard>{description}</LabelCard>
       <form action="">
         <BuyContainer>
-          <div>
+          <ValueBuyContainer>
             <strong>R$</strong>
             <span>{value}</span>
-          </div>
-          <Counter />
-          <button name="carrinho" type="submit">
-            <ShoppingCartSimple size={16} weight="fill" />
-          </button>
+          </ValueBuyContainer>
+          <CounterBuyContainer>
+            <Counter valueCounter={1} />
+            <ButtonBuy name="carrinho">
+              <ShoppingCartSimple size={22} weight="fill" />
+            </ButtonBuy>
+          </CounterBuyContainer>
         </BuyContainer>
       </form>
     </CardContainer>

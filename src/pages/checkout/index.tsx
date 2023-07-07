@@ -4,17 +4,18 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
-  Trash,
 } from 'phosphor-react'
-import { Counter } from '../../components/Counter'
 import {
+  ButtonsPyment,
   CheckoutContainer,
   FormSection,
   InputForm,
+  PaymentSection,
   SectionBody,
   SectionHeader,
   ShoppingCartSection,
 } from './styles'
+import { Cart } from '../../components/Cart'
 
 export function Checkout() {
   return (
@@ -32,16 +33,32 @@ export function Checkout() {
             </p>
           </SectionHeader>
           <FormSection>
-            <InputForm type="text" placeholder="CEP" variant="12.5rem" />
+            <InputForm type="number" placeholder="CEP" variant="12.5rem" />
             <InputForm type="text" placeholder="Rua" variant="100%" />
             <div>
-              <InputForm type="text" placeholder="Número" variant="12.5rem" />
+              <InputForm
+                type="number"
+                placeholder="Número"
+                maxLength={5}
+                variant="5rem"
+              />
               <InputForm type="text" placeholder="Complemento" variant="100%" />
             </div>
             <div>
               <InputForm type="text" placeholder="Bairro" variant="12.5rem" />
               <InputForm type="text" placeholder="Cidade" variant="100%" />
-              <InputForm type="text" placeholder="UF" variant="3.75rem" />
+              <InputForm
+                type="text"
+                placeholder="UF"
+                maxLength={2}
+                variant="4rem"
+                list="UF-suggestions"
+              />
+              <datalist id="UF-suggestions">
+                <option value="BA" />
+                <option value="SP" />
+                <option value="RJ" />
+              </datalist>
             </div>
           </FormSection>
         </SectionBody>
@@ -57,44 +74,27 @@ export function Checkout() {
               </span>
             </p>
           </SectionHeader>
-          <div>
-            <button>
-              <i>
-                <CreditCard size={22} />
-              </i>
+          <PaymentSection>
+            <ButtonsPyment>
+              <CreditCard size={16} />
               cartão de crédito
-            </button>
-            <button>
-              <i>
-                <Bank size={22} />
-              </i>
+            </ButtonsPyment>
+            <ButtonsPyment>
+              <Bank size={16} />
               cartão de débito
-            </button>
-            <button>
-              <i>
-                <Money size={22} />
-              </i>
+            </ButtonsPyment>
+            <ButtonsPyment>
+              <Money size={16} />
               Dinheiro
-            </button>
-          </div>
+            </ButtonsPyment>
+          </PaymentSection>
         </SectionBody>
       </div>
       <div>
         <h1>Cafés selecionados</h1>
         <ShoppingCartSection>
-          <div>
-            <img />
-            <div>
-              <p>Expresso Tradicional</p>
-              <Counter />
-              <button>
-                <i>
-                  <Trash size={22} />
-                </i>
-                Remover
-              </button>
-            </div>
-          </div>
+          <Cart />
+          <br />
           <p>
             <span>Total de itens</span> <strong>R$ 29,70</strong>
           </p>

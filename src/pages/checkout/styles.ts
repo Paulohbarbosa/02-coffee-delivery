@@ -75,7 +75,7 @@ export const FormSection = styled.div`
   }
 `
 interface InputProps {
-  variant: '12.5rem' | '100%' | '3.75rem'
+  variant: '12.5rem' | '100%' | '4rem' | '5rem'
 }
 export const InputForm = styled.input<InputProps>`
   width: ${(props) => props.variant};
@@ -85,6 +85,57 @@ export const InputForm = styled.input<InputProps>`
   border-radius: 0.25rem;
   border: 1px solid ${(props) => props.theme['base-button']};
   background-color: ${(props) => props.theme['base-input']};
+
+  font-family: 'Roboto';
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: ${(props) => props.theme['base-text']};
+
+  &::-webkit-input-placeholder {
+    color: ${(props) => props.theme['base-label']};
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+`
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  border: 1px solid transparent; //para não dá o pulinho quando selecionado
+  border-radius: 0.375rem;
+  background-color: ${(props) => props.theme['base-button']};
+
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-size: 0.75rem;
+  font-weight: 400;
+
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme['base-hover']};
+  }
+
+  &:focus {
+    box-shadow: none;
+    background-color: ${(props) => props.theme['purple-light']};
+    border: 1px solid ${(props) => props.theme.purple};
+  }
+`
+export const ButtonsPyment = styled(Button)`
+  padding: 1rem;
+`
+
+export const PaymentSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 `
 
 export const ShoppingCartSection = styled.div`

@@ -55,19 +55,16 @@ export const LabelCard = styled.span`
   margin-bottom: 2rem;
 `
 export const BuyContainer = styled.div`
-  width: 12rem;
+  width: 12.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-
-  div {
-    display: flex;
-    align-items: baseline;
-    gap: 0.2rem;
-    color: ${(props) => props.theme['base-text']};
-    flex: auto;
-  }
+`
+export const ValueBuyContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: ${(props) => props.theme['base-text']};
 
   strong {
     font-family: 'Roboto', sans-serif;
@@ -79,20 +76,27 @@ export const BuyContainer = styled.div`
     font-weight: 700;
     font-size: 1.5rem;
   }
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+`
+export const CounterBuyContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* align-items: center; */
+  gap: 0.5rem;
+`
+export const ButtonBuy = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    padding: 0.5rem;
-    border: 0;
-    border-radius: 6px;
-    margin-left: 0.5rem;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 6px;
 
-    color: ${(props) => props.theme.white};
-    background-color: ${(props) => props.theme['purple-dark']};
-  }
-  button:hover {
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme['purple-dark']};
+
+  &:hover {
     background-color: ${(props) => props.theme.purple};
   }
 `

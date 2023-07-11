@@ -6,9 +6,11 @@ import {
   Money,
 } from 'phosphor-react'
 import {
+  ButtonPaymentSection,
   ButtonsPyment,
   CheckoutContainer,
   FormSection,
+  InformationPaymentSection,
   InputForm,
   PaymentSection,
   SectionBody,
@@ -94,17 +96,21 @@ export function Checkout() {
         <h1>Cafés selecionados</h1>
         <ShoppingCartSection>
           <Cart />
-          <br />
-          <p>
-            <span>Total de itens</span> <strong>R$ 29,70</strong>
-          </p>
-          <p>
-            <span>Entrega</span> <strong>R$ 3,50</strong>
-          </p>
-          <p>
-            <span>Total</span> <strong>R$ 33,20</strong>
-          </p>
-          <button>Confirmar Pedido</button>
+          <hr />
+          <Cart />
+          <hr />
+          <InformationPaymentSection>
+            <p>
+              <label>Total de itens</label> <span>R$ 29,70</span>
+            </p>
+            <p>
+              <label>Entrega</label> <span>R$ 3,50</span>
+            </p>
+            <p>
+              <strong>Total</strong> <strong>R$ 33,20</strong>
+            </p>
+          </InformationPaymentSection>
+          <ButtonPaymentSection>Confirmar Pedido</ButtonPaymentSection>
         </ShoppingCartSection>
       </div>
     </CheckoutContainer>

@@ -142,9 +142,59 @@ export const ShoppingCartSection = styled.div`
   display: flex;
   padding: 2.5rem;
   flex-direction: column;
-  align-items: flex-start;
   gap: 1.5rem;
 
   border-radius: 0.375rem 2.75rem;
   background-color: ${(props) => props.theme['base-card']};
+
+  hr {
+    border: 1px solid ${(props) => props.theme['base-button']};
+  }
+`
+export const InformationPaymentSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  p {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+
+    label {
+      font-size: 0.875rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+
+    strong {
+      font-size: 1.25rem;
+    }
+  }
+`
+export const ButtonPaymentSection = styled.button`
+  display: flex;
+  padding: 0.75rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.375rem;
+  border: 0;
+
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.yellow};
+
+  font-family: 'Roboto';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: ${(props) => props.theme['yellow-dark']};
+  }
 `

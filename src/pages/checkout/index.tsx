@@ -42,9 +42,16 @@ export function Checkout() {
                 type="number"
                 placeholder="Número"
                 maxLength={5}
-                variant="5rem"
+                variant="6rem"
               />
-              <InputForm type="text" placeholder="Complemento" variant="100%" />
+              <div>
+                <InputForm
+                  type="text"
+                  placeholder="Complemento"
+                  variant="100%"
+                />
+                <p>Opcional</p>
+              </div>
             </div>
             <div>
               <InputForm type="text" placeholder="Bairro" variant="12.5rem" />

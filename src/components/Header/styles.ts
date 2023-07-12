@@ -40,6 +40,34 @@ export const ButtonLocation = styled.button`
   color: ${(props) => props.theme['purple-dark']};
   background: ${(props) => props.theme['purple-light']};
 `
+export const ButtonContainer = styled.div`
+  display: flex;
+  position: absolute;
+
+  p {
+    content: '';
+    background-color: ${(props) => props.theme['yellow-dark']};
+
+    font-size: 0.75rem;
+    font-family: 'Roboto';
+    font-weight: 700;
+    color: ${(props) => props.theme.white};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.25rem;
+    height: 1.25rem;
+
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    border-radius: 50%;
+  }
+`
 export const ButtonShoppingCart = styled.button`
   width: 38px;
   height: 38px;
@@ -60,28 +88,5 @@ export const ButtonShoppingCart = styled.button`
 
   :hover {
     color: ${(props) => props.theme.yellow};
-  }
-  &::before {
-    content: '3';
-    background-color: ${(props) => props.theme['yellow-dark']};
-
-    font-size: 0.75rem;
-    font-family: 'Roboto';
-    font-weight: 700;
-    color: ${(props) => props.theme.white};
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 1.25rem;
-    height: 1.25rem;
-
-    position: absolute;
-
-    top: 26px;
-    right: 152px;
-
-    border-radius: 50%;
   }
 `

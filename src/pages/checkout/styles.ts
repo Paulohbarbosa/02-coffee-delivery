@@ -72,10 +72,28 @@ export const FormSection = styled.div`
     width: 100%;
     display: flex;
     gap: 0.75rem;
+
+    position: relative;
+
+    p {
+      display: flex;
+      width: 10px;
+      height: 10px;
+      display: block;
+      position: absolute;
+      top: 30%;
+      left: 80%;
+
+      color: ${(props) => props.theme['base-label']};
+      font-family: 'Roboto';
+      font-size: 0.75rem;
+      font-style: italic;
+      font-weight: 400;
+    }
   }
 `
 interface InputProps {
-  variant: '12.5rem' | '100%' | '4rem' | '5rem'
+  variant: '12.5rem' | '100%' | '4rem' | '6rem'
 }
 export const InputForm = styled.input<InputProps>`
   width: ${(props) => props.variant};

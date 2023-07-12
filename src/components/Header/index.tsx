@@ -1,4 +1,9 @@
-import { ButtonLocation, ButtonShoppingCart, HeaderContainer } from './styles'
+import {
+  ButtonContainer,
+  ButtonLocation,
+  ButtonShoppingCart,
+  HeaderContainer,
+} from './styles'
 import logo from '../../assets/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
@@ -19,9 +24,12 @@ export function Header() {
             Porto Alegre, RS
           </ButtonLocation>
           <NavLink to="/checkout" title="Carrinho">
-            <ButtonShoppingCart>
-              <ShoppingCart size={22} weight="fill" />
-            </ButtonShoppingCart>
+            <ButtonContainer>
+              <ButtonShoppingCart>
+                <ShoppingCart size={22} weight="fill" />
+              </ButtonShoppingCart>
+              <p>3</p>
+            </ButtonContainer>
           </NavLink>
         </nav>
       </HeaderContainer>

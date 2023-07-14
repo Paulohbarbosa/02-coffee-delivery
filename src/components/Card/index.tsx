@@ -31,20 +31,20 @@ export function Card({ img, tags, name, description, value }: CardProps) {
       </CategoryContainer>
       <SubtitleCard>{name}</SubtitleCard>
       <LabelCard>{description}</LabelCard>
-      <form action="">
-        <BuyContainer>
-          <ValueBuyContainer>
-            <strong>R$</strong>
-            <span>{value}</span>
-          </ValueBuyContainer>
-          <CounterBuyContainer>
-            <Counter valueCounter={1} />
-            <ButtonBuy name="carrinho">
-              <ShoppingCartSimple size={22} weight="fill" />
-            </ButtonBuy>
-          </CounterBuyContainer>
-        </BuyContainer>
-      </form>
+      {/* <form action=""> */}
+      <BuyContainer>
+        <ValueBuyContainer>
+          <strong>R$</strong>
+          <span>{value}</span>
+        </ValueBuyContainer>
+        <CounterBuyContainer>
+          <Counter />
+          <ButtonBuy name="carrinho">
+            <ShoppingCartSimple size={22} weight="fill" />
+          </ButtonBuy>
+        </CounterBuyContainer>
+      </BuyContainer>
+      {/* </form> */}
     </CardContainer>
   )
 }

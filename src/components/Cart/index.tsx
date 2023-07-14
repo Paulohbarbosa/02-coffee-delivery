@@ -19,7 +19,7 @@ export function Cart() {
         <CartInfo>
           <h2>Expresso Tradicional</h2>
           <CartButtonContainer>
-            <Counter valueCounter={1} />
+            <Counter />
             <ButtonCart>
               <Trash size={16} />
               Remover

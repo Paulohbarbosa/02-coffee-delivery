@@ -16,4 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     body{
         background: ${(props) => props.theme.background};
     }
+
+    button{
+        cursor: pointer;
+    }
 `

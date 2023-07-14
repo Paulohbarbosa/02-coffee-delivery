@@ -20,10 +20,18 @@ export const CounterContainer = styled.div`
     font-weight: 400;
     text-align: center;
   }
-  svg {
-    color: ${(props) => props.theme.purple};
-    &:hover {
-      color: ${(props) => props.theme['purple-dark']};
-    }
+`
+export const ButtonContainer = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+  color: ${(props) => props.theme.purple};
+
+  &:hover {
+    color: ${(props) => props.theme['purple-dark']};
   }
 `

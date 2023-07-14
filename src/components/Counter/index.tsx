@@ -1,15 +1,31 @@
 import { Minus, Plus } from 'phosphor-react'
-import { CounterContainer } from './styled'
-interface CounterProps {
-  valueCounter: number
-}
+import { ButtonContainer, CounterContainer } from './styled'
+import { useState } from 'react'
 
-export function Counter({ valueCounter }: CounterProps) {
+export function Counter() {
+  const [counter, setCounter] = useState(1)
+
+  function handleCounterPlus() {
+    if (counter < 9) {
+      setCounter(counter + 1)
+    }
+  }
+
+  function handleCounterMinus() {
+    if (counter > 0) {
+      setCounter(counter - 1)
+    }
+  }
+
   return (
     <CounterContainer>
-      <Minus size={14} weight="bold" />
-      <label>{valueCounter}</label>
-      <Plus size={14} weight="bold" />
+      <ButtonContainer onClick={handleCounterMinus}>
+        <Minus size={14} weight="bold" />
+      </ButtonContainer>
+      <label>{counter}</label>
+      <ButtonContainer onClick={handleCounterPlus}>
+        <Plus size={14} weight="bold" />
+      </ButtonContainer>
     </CounterContainer>
   )
 }

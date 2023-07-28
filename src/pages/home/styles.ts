@@ -33,7 +33,7 @@ export const TitleContainer = styled.div`
   }
 `
 interface IconsProps {
-  variant: String
+  variant: string
 }
 
 export const IconsContainer = styled.i<IconsProps>`

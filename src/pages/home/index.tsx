@@ -9,6 +9,19 @@ import {
   TitleContainer,
 } from './styles'
 import { Card } from '../../components/Card'
+import { createContext, useEffect, useState } from 'react'
+
+// INFO: Aqui teremos o CONTEXTO, o ESTADO DO CARRINHO as funções de ADICIONAR COMPRAS NO CARRINHO, IMPEDIR que a mesmo compra seja repetida
+
+interface OrderCartProps {
+  id: number
+  amount: number
+}
+
+interface ShoppingCartTypes {
+  newOrderCoffee: (orderCoffee: OrderCartProps) => void
+}
+export const ShoppingCartCoffeeContext = createContext({} as ShoppingCartTypes)
 
 export function Home() {
   const coffeeLists = [
@@ -134,6 +147,41 @@ export function Home() {
       value: '9,90',
     },
   ]
+
+  const [shoppingCart, setShoppingCart] = useState<OrderCartProps[]>([])
+
+  function newOrderCoffee(newOrder: OrderCartProps) {
+    // TODO: Função inserir dados na carrinho:
+
+    const isCoffeeOrderInShoppingCart = shoppingCart.find(
+      (coffee) => coffee.id === newOrder.id,
+    )
+    // [x] verificar se o carrinho não está vazio E se tem algum elemento dentro com o mesmo id do novo elemento
+    if (shoppingCart.length > 0 && isCoffeeOrderInShoppingCart) {
+      // [x] Somar a quantidade
+      const newOrderCoffee: OrderCartProps = {
+        id: newOrder.id,
+        amount: isCoffeeOrderInShoppingCart.amount + newOrder.amount,
+      }
+      // [x] retirar o elemento antigo da lista
+      const isNewListShoppingCart = shoppingCart.filter(
+        (coffee) => coffee.id !== newOrder.id,
+      )
+      // [x] inserindo o novo elemento atualizado
+      const newList: OrderCartProps[] =
+        isNewListShoppingCart.concat(newOrderCoffee)
+
+      setShoppingCart(newList)
+    } else {
+      // [x] inserir o novo elemento no estado
+      setShoppingCart([...shoppingCart, newOrder])
+    }
+  }
+
+  useEffect(() => {
+    console.log('no carrinho de compras temos ', shoppingCart)
+  }, [shoppingCart])
+
   return (
     <>
       <IntroContainer>
@@ -179,18 +227,21 @@ export function Home() {
       <AreaCardContainer>
         <h1>Nossos cafés</h1>
         <AreaCards>
-          {coffeeLists.map((coffee) => {
-            return (
-              <Card
-                key={coffee.id}
-                img={`src/assets/coffees/${coffee.img}`}
-                name={coffee.name}
-                tags={coffee.tags}
-                description={coffee.description}
-                value={coffee.value}
-              />
-            )
-          })}
+          <ShoppingCartCoffeeContext.Provider value={{ newOrderCoffee }}>
+            {coffeeLists.map((coffee) => {
+              return (
+                <Card
+                  key={coffee.id}
+                  id={coffee.id}
+                  img={`src/assets/coffees/${coffee.img}`}
+                  name={coffee.name}
+                  tags={coffee.tags}
+                  description={coffee.description}
+                  value={coffee.value}
+                />
+              )
+            })}
+          </ShoppingCartCoffeeContext.Provider>
         </AreaCards>
       </AreaCardContainer>
     </>

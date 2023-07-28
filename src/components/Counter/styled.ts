@@ -21,7 +21,7 @@ export const CounterContainer = styled.div`
     text-align: center;
   }
 `
-export const ButtonContainer = styled.button`
+export const ButtonContainer = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;

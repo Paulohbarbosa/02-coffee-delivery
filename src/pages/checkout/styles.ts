@@ -16,7 +16,7 @@ export const CheckoutContainer = styled.div`
   }
 `
 interface IconsProps {
-  variant: String
+  variant: string
 }
 export const SectionHeader = styled.div<IconsProps>`
   display: flex;

@@ -81,7 +81,7 @@ export const IntensContainer = styled.div`
 `
 
 interface IconsProps {
-  variant: String
+  variant: string
 }
 export const IconsContainer = styled.i<IconsProps>`
   width: 2rem;

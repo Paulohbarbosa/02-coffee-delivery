@@ -7,7 +7,7 @@ import {
 } from 'phosphor-react'
 import {
   ButtonPaymentSection,
-  ButtonsPyment,
+  SelectInputPayment,
   CheckoutContainer,
   FormSection,
   InformationPaymentSection,
@@ -18,8 +18,54 @@ import {
   ShoppingCartSection,
 } from './styles'
 import { Cart } from '../../components/Cart'
+import { useContext, useState } from 'react'
+import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
+import { set } from 'react-hook-form'
+
+interface CartProps {
+  id: number
+  amount: number
+}
 
 export function Checkout() {
+  const { shoppingCart } = useContext(ShoppingCartCoffeeContext)
+
+  // INFO: possível solução, criar um estado onde armazena o valor total de itens com os seus respectivos quantidades
+
+  const [totalQuantity, setTotalQuantity] = useState(0)
+
+  // [x] temos que setar em totalQuantity os dados que estão em shoppingCart
+  function quantityOdItemsInCart() {
+    if (shoppingCart.length > 0 && totalQuantity === 0) {
+      const total = shoppingCart.reduce((getTotal, coffee) => {
+        return getTotal + coffee.amount
+      }, 0)
+
+      setTotalQuantity(total)
+    }
+  }
+  quantityOdItemsInCart()
+
+  function incrementInTotalQuantity() {
+    setTotalQuantity(totalQuantity + 1)
+  }
+  function decrementTheTotalQuantity() {
+    setTotalQuantity(totalQuantity - 1)
+  }
+
+  function totalItems() {
+    const valor = totalQuantity * 9.9
+    return valor.toFixed(2)
+  }
+
+  function valueTotal(valorDaCompra: number) {
+    const value = parseFloat(valorDaCompra) + 3.5
+    return value.toFixed(2)
+  }
+
+  function convertValueToString(valor: number) {
+    return valor.toString().replace('.', ',')
+  }
   return (
     <CheckoutContainer>
       <div>
@@ -84,37 +130,56 @@ export function Checkout() {
             </p>
           </SectionHeader>
           <PaymentSection>
-            <ButtonsPyment>
-              <CreditCard size={16} />
-              cartão de crédito
-            </ButtonsPyment>
-            <ButtonsPyment>
+            <SelectInputPayment>
+              <input type="radio" name="formaPagamento" />
+              <label>
+                <CreditCard size={16} />
+                cartão de crédito
+              </label>
+            </SelectInputPayment>
+            <SelectInputPayment>
+              <input type="radio" name="formaPagamento" />
               <Bank size={16} />
               cartão de débito
-            </ButtonsPyment>
-            <ButtonsPyment>
+            </SelectInputPayment>
+            <SelectInputPayment>
+              <input type="radio" name="formaPagamento" />
               <Money size={16} />
               Dinheiro
-            </ButtonsPyment>
+            </SelectInputPayment>
           </PaymentSection>
         </SectionBody>
       </div>
       <div>
         <h1>Cafés selecionados</h1>
         <ShoppingCartSection>
-          <Cart />
-          <hr />
-          <Cart />
-          <hr />
+          {shoppingCart.map((cart) => {
+            return (
+              <Cart
+                key={cart.id}
+                id={cart.id}
+                img={cart.img}
+                name={cart.name}
+                value={cart.value}
+                amountValue={cart.amount}
+                handleDecrement={decrementTheTotalQuantity}
+                handleIncrement={incrementInTotalQuantity}
+              />
+            )
+          })}
           <InformationPaymentSection>
             <p>
-              <label>Total de itens</label> <span>R$ 29,70</span>
+              <label>Total de itens</label>{' '}
+              <span>R$ {convertValueToString(totalItems())}</span>
             </p>
             <p>
               <label>Entrega</label> <span>R$ 3,50</span>
             </p>
             <p>
-              <strong>Total</strong> <strong>R$ 33,20</strong>
+              <strong>Total</strong>{' '}
+              <strong>
+                R$ {convertValueToString(valueTotal(totalItems()))}
+              </strong>
             </p>
           </InformationPaymentSection>
           <ButtonPaymentSection>Confirmar Pedido</ButtonPaymentSection>

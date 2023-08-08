@@ -6,7 +6,6 @@ export const CartContainer = styled.div`
   padding: 0.5rem 0.25rem;
   justify-content: space-between;
   align-items: flex-start;
-
   img {
     width: 4rem;
     height: auto;

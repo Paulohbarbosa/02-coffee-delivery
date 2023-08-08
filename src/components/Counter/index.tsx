@@ -1,18 +1,22 @@
 import { Minus, Plus } from 'phosphor-react'
 import { ButtonContainer, CounterContainer } from './styled'
-import { useContext } from 'react'
-import { AmountCoffee } from '../Card'
+interface AmountPops {
+  value: number
+  handleCounterPlus: () => void
+  handleCounterMinus: () => void
+}
 
-export function Counter() {
-  const { handleCounterMinus, handleCounterPlus, amount } =
-    useContext(AmountCoffee)
-
+export function Counter({
+  value,
+  handleCounterMinus,
+  handleCounterPlus,
+}: AmountPops) {
   return (
     <CounterContainer>
       <ButtonContainer onClick={handleCounterMinus}>
         <Minus size={14} weight="bold" />
       </ButtonContainer>
-      <label>{amount}</label>
+      <label>{value}</label>
       <ButtonContainer onClick={handleCounterPlus}>
         <Plus size={14} weight="bold" />
       </ButtonContainer>

@@ -9,6 +9,8 @@ export const HeaderContainer = styled.header`
 
   background: ${(props) => props.theme.background};
 
+  z-index: 1;
+
   position: fixed;
   margin-top: 0px !important;
   nav {
@@ -18,9 +20,6 @@ export const HeaderContainer = styled.header`
 `
 
 export const ButtonLocation = styled.button`
-  /* width: 150px;
-  height: 38px; */
-
   display: flex;
   align-items: center;
   justify-content: center;

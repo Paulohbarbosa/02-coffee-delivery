@@ -55,6 +55,8 @@ export const SectionBody = styled.div`
   border-radius: 0.375rem;
   background-color: ${(props) => props.theme['base-card']};
   margin-bottom: 0.75rem;
+
+  z-index: -1;
 `
 export const FormSection = styled.div`
   width: 100%;
@@ -117,7 +119,7 @@ export const InputForm = styled.input<InputProps>`
     color: transparent;
   }
 `
-const Button = styled.button`
+const Select = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,7 +148,7 @@ const Button = styled.button`
     border: 1px solid ${(props) => props.theme.purple};
   }
 `
-export const ButtonsPyment = styled(Button)`
+export const SelectInputPayment = styled(Select)`
   padding: 1rem;
 `
 

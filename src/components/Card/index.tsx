@@ -11,8 +11,8 @@ import {
   ValueBuyContainer,
 } from './styles'
 import { Counter } from '../Counter'
-import { createContext, useContext, useState } from 'react'
-import { ShoppingCartCoffeeContext } from '../../pages/home'
+import { useContext, useState } from 'react'
+import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
 interface CardProps {
   id: number
   img: string
@@ -22,26 +22,18 @@ interface CardProps {
   value: string
 }
 
-interface AmountTypes {
-  amount: number
-  handleCounterPlus: () => void
-  handleCounterMinus: () => void
-}
-export const AmountCoffee = createContext({} as AmountTypes)
-
 export function Card({ id, img, tags, name, description, value }: CardProps) {
   const { newOrderCoffee } = useContext(ShoppingCartCoffeeContext)
 
   const [amount, setAmount] = useState(1)
 
-  function handleCounterPlus() {
+  function plus() {
     if (amount < 9) {
       setAmount(amount + 1)
     }
   }
-
-  function handleCounterMinus() {
-    if (amount > 0) {
+  function minus() {
+    if (amount > 1) {
       setAmount(amount - 1)
     }
   }
@@ -49,6 +41,9 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
   function handleNewOrderCoffee() {
     const orderCoffee = {
       id,
+      img,
+      name,
+      value,
       amount,
     }
     newOrderCoffee(orderCoffee)
@@ -71,11 +66,11 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
           <span>{value}</span>
         </ValueBuyContainer>
         <CounterBuyContainer>
-          <AmountCoffee.Provider
-            value={{ amount, handleCounterPlus, handleCounterMinus }}
-          >
-            <Counter />
-          </AmountCoffee.Provider>
+          <Counter
+            value={amount}
+            handleCounterPlus={plus}
+            handleCounterMinus={minus}
+          />
           <ButtonBuy name="carrinho" onClick={handleNewOrderCoffee}>
             <ShoppingCartSimple size={22} weight="fill" />
           </ButtonBuy>

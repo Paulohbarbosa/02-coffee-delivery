@@ -7,8 +7,20 @@ import {
 import logo from '../../assets/logo.svg'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { useContext } from 'react'
+import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Header() {
+  const { shoppingCart } = useContext(ShoppingCartCoffeeContext)
+
+  function cartButtonInformation() {
+    if (shoppingCart.length > 0) {
+      return <p>{shoppingCart.length}</p>
+    } else {
+      return ''
+    }
+  }
+
   return (
     <>
       <HeaderContainer>
@@ -28,7 +40,7 @@ export function Header() {
               <ButtonShoppingCart>
                 <ShoppingCart size={22} weight="fill" />
               </ButtonShoppingCart>
-              <p>3</p>
+              {cartButtonInformation()}
             </ButtonContainer>
           </NavLink>
         </nav>

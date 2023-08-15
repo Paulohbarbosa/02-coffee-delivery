@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
   margin-top: 2.5rem;
   padding: 5rem 10rem;
   display: grid;
@@ -56,7 +56,7 @@ export const SectionBody = styled.div`
   background-color: ${(props) => props.theme['base-card']};
   margin-bottom: 0.75rem;
 
-  z-index: -1;
+  /* z-index: -1; */
 `
 export const FormSection = styled.div`
   width: 100%;
@@ -119,7 +119,7 @@ export const InputForm = styled.input<InputProps>`
     color: transparent;
   }
 `
-const Select = styled.button`
+const Select = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,6 +128,7 @@ const Select = styled.button`
   border: 1px solid transparent; //para não dá o pulinho quando selecionado
   border-radius: 0.375rem;
   background-color: ${(props) => props.theme['base-button']};
+  box-shadow: none;
 
   text-transform: uppercase;
   font-family: 'Roboto';
@@ -137,19 +138,40 @@ const Select = styled.button`
   svg {
     color: ${(props) => props.theme.purple};
   }
-
+`
+export const SelectInputPayment = styled(Select)`
+  padding: 1rem;
+  position: relative;
+  //expande o input e coloca encima do objeto pai e deixa invisível
+  input {
+    all: unset; //comente esta parte e veja o input no elemento
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0.375rem;
+  }
+  // poderia envolver os dois elementos em uma elemento pai para não repetir o código (mas estou com preguiça)
+  svg {
+    pointer-events: none; // informa que a intenção do click do mouse não é neste elemento, mas no que está logo abaixo
+    user-select: none; // impede que o elemento seja selecionado
+    z-index: 1;
+  }
+  span {
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
   &:hover {
     background-color: ${(props) => props.theme['base-hover']};
   }
 
-  &:focus {
+  input[type='radio']:checked {
     box-shadow: none;
     background-color: ${(props) => props.theme['purple-light']};
     border: 1px solid ${(props) => props.theme.purple};
   }
-`
-export const SelectInputPayment = styled(Select)`
-  padding: 1rem;
 `
 
 export const PaymentSection = styled.div`

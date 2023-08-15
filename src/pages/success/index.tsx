@@ -10,8 +10,12 @@ import {
   HeaderSuccess,
 } from './styles'
 import imageSuccess from '../../assets/Illustration-success.svg'
+import { useContext } from 'react'
+import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
 
 export function Success() {
+  const { orderFinalized } = useContext(ShoppingCartCoffeeContext)
+
   return (
     <SuccessContainer>
       <HeaderSuccess>
@@ -27,7 +31,12 @@ export function Success() {
             <InformationItens>
               <label>Entrega em</label>
               <span>
-                Rua João Daniel Martinelli, 102, Farrapos - Porto Alegre, RS
+                {orderFinalized.map((order) => {
+                  const address = `
+                    ${order.address}, ${order.number}, ${order.neighborhood}, ${order.city} - ${order.uf}. ${order.cep}
+                  `
+                  return address
+                })}
               </span>
             </InformationItens>
           </IntensContainer>
@@ -46,7 +55,11 @@ export function Success() {
             </IconsContainer>
             <InformationItens>
               <label>Pagamento na entrega</label>
-              <span>Cartão de Crédito</span>
+              <span>
+                {orderFinalized.map((order) => {
+                  return order.paymentOrder
+                })}
+              </span>
             </InformationItens>
           </IntensContainer>
         </ContainerDeliveryInformation>

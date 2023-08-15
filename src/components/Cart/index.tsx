@@ -17,34 +17,38 @@ interface CartProps {
   name: string
   amountValue: number
   value: string
-  handleIncrement: () => void
-  handleDecrement: () => void
 }
 
-export function Cart({
-  id,
-  img,
-  name,
-  amountValue,
-  value,
-  handleDecrement,
-  handleIncrement,
-}: CartProps) {
-  // const { shoppingCart, newOrderCoffee } = useContext(ShoppingCartCoffeeContext)
+export function Cart({ id, img, name, amountValue, value }: CartProps) {
+  const { deleteOrderCoffee, changeOrderAmount } = useContext(
+    ShoppingCartCoffeeContext,
+  )
 
   const [amount, setAmount] = useState(amountValue)
 
   function plus() {
     if (amount < 9) {
+      const item = {
+        id,
+        amount: 1,
+      }
+      changeOrderAmount(item)
       setAmount(amount + 1)
-      handleIncrement()
     }
   }
   function minus() {
     if (amount > 1) {
+      const item = {
+        id,
+        amount: -1,
+      }
+      changeOrderAmount(item)
       setAmount(amount - 1)
-      handleDecrement()
     }
+  }
+
+  function deleteCoffee() {
+    deleteOrderCoffee(id)
   }
 
   return (
@@ -60,7 +64,7 @@ export function Cart({
                 handleCounterMinus={minus}
                 handleCounterPlus={plus}
               />
-              <ButtonCart>
+              <ButtonCart onClick={deleteCoffee}>
                 <Trash size={16} />
                 Remover
               </ButtonCart>

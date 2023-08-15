@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
-interface OrderCartProps {
+export interface OrderCartProps {
   id: number
   img: string
   name: string
@@ -15,12 +15,34 @@ interface CoffeeListsProps {
   description: string
   value: string
 }
+interface changedOrder {
+  id: number
+  amount: number
+}
+
+export interface OrderFinalizedProps {
+  id: string
+  OrderCoffee: OrderCartProps
+  cep: string
+  address: string
+  number: string
+  complement: string
+  neighborhood: string
+  city: string
+  uf: string
+  paymentOrder: string
+}
 
 interface ShoppingCartTypes {
   newOrderCoffee: (orderCoffee: OrderCartProps) => void
+  changeOrderAmount: (orderCoffee: changedOrder) => void
+  deleteOrderCoffee: (id: number) => void
+  orderCoffeeFinalized: (purchase: OrderFinalizedProps) => void
   coffeeLists: CoffeeListsProps[]
   shoppingCart: OrderCartProps[]
+  orderFinalized: OrderFinalizedProps[]
 }
+
 export const ShoppingCartCoffeeContext = createContext({} as ShoppingCartTypes)
 
 interface CoffeeContextProviderProps {
@@ -155,16 +177,35 @@ export function CoffeeContextProvider({
       value: '9,90',
     },
   ]
+  const [orderFinalized, setOrderFinalized] = useState<OrderFinalizedProps[]>(
+    [],
+  )
+
   const [shoppingCart, setShoppingCart] = useState<OrderCartProps[]>([])
 
-  // TODO: Função inserir dados na carrinho:
+  function changeOrderAmount(changedOrder: changedOrder) {
+    setShoppingCart((state) =>
+      state.map((order) => {
+        if (order.id === changedOrder.id) {
+          return { ...order, amount: order.amount + changedOrder.amount }
+        } else {
+          return order
+        }
+      }),
+    )
+  }
+
+  function deleteOrderCoffee(id: number) {
+    const newList = shoppingCart.filter((order) => order.id !== id)
+    console.log(newList)
+    setShoppingCart(newList)
+  }
+
   function newOrderCoffee(newOrder: OrderCartProps) {
-    // [x] verificar se tem algum elemento dentro com o mesmo id
     const isCoffeeOrderInShoppingCart = shoppingCart.find(
       (coffee) => coffee.id === newOrder.id,
     )
     if (isCoffeeOrderInShoppingCart) {
-      // [x] Soma a quantidade e mantém o mesmo id
       const newOrderCoffee: OrderCartProps = {
         id: newOrder.id,
         img: newOrder.img,
@@ -172,31 +213,36 @@ export function CoffeeContextProvider({
         value: newOrder.value,
         amount: isCoffeeOrderInShoppingCart.amount + newOrder.amount,
       }
-      // [x] retirar o elemento antigo da lista
       const isNewListShoppingCart = shoppingCart.filter(
         (coffee) => coffee.id !== newOrder.id,
       )
-      // [x] inseri na nova lista o novo elemento atualizado
-      const newList: OrderCartProps[] =
-        isNewListShoppingCart.concat(newOrderCoffee)
-      // [x] seta uma nova lista inteira no estado
-      setShoppingCart(newList)
+
+      setShoppingCart(isNewListShoppingCart.concat(newOrderCoffee))
     } else {
-      // [x] inserir o novo elemento no estado atual
-      setShoppingCart([...shoppingCart, newOrder])
+      setShoppingCart((state) => [...state, newOrder])
     }
   }
 
+  function orderCoffeeFinalized(purchase: OrderFinalizedProps) {
+    setOrderFinalized((state) => [...state, purchase])
+  }
+
   useEffect(() => {
-    console.log('no carrinho de compras temos ', shoppingCart)
-  }, [shoppingCart])
+    // console.log('no carrinho de compras temos ', shoppingCart)
+    // console.log('no pedido finalizado temos ', orderFinalized)
+    setShoppingCart([])
+  }, [orderFinalized])
 
   return (
     <ShoppingCartCoffeeContext.Provider
       value={{
         newOrderCoffee,
+        changeOrderAmount,
         coffeeLists,
         shoppingCart,
+        deleteOrderCoffee,
+        orderCoffeeFinalized,
+        orderFinalized,
       }}
     >
       {children}

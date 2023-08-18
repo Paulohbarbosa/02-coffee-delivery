@@ -22,11 +22,11 @@ interface changedOrder {
 
 export interface OrderFinalizedProps {
   id: string
-  OrderCoffee: OrderCartProps
+  OrderCoffee: OrderCartProps[]
   cep: string
   address: string
   number: string
-  complement: string
+  complement: string | undefined
   neighborhood: string
   city: string
   uf: string
@@ -197,7 +197,6 @@ export function CoffeeContextProvider({
 
   function deleteOrderCoffee(id: number) {
     const newList = shoppingCart.filter((order) => order.id !== id)
-    console.log(newList)
     setShoppingCart(newList)
   }
 
@@ -229,7 +228,7 @@ export function CoffeeContextProvider({
 
   useEffect(() => {
     // console.log('no carrinho de compras temos ', shoppingCart)
-    // console.log('no pedido finalizado temos ', orderFinalized)
+    console.log('no pedido finalizado temos ', orderFinalized)
     setShoppingCart([])
   }, [orderFinalized])
 

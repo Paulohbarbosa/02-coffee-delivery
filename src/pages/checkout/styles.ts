@@ -119,6 +119,32 @@ export const InputForm = styled.input<InputProps>`
     color: transparent;
   }
 `
+export const SelectForm = styled.select<InputProps>`
+  width: ${(props) => props.variant};
+  padding: 0.75rem;
+  align-items: center;
+
+  border-radius: 0.25rem;
+  border: 1px solid ${(props) => props.theme['base-button']};
+  background-color: ${(props) => props.theme['base-input']};
+
+  font-family: 'Roboto';
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: ${(props) => props.theme['base-text']};
+
+  &::-webkit-input-placeholder {
+    color: ${(props) => props.theme['base-label']};
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  option {
+    background-color: ${(props) => props.theme['base-input']};
+  }
+`
+
 const Select = styled.div`
   display: flex;
   align-items: center;
@@ -238,5 +264,11 @@ export const ButtonPaymentSection = styled.button`
 
   &:hover {
     background-color: ${(props) => props.theme['yellow-dark']};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme['yellow-light']};
+    cursor: no-drop;
+    color: ${(props) => props.theme['base-label']};
   }
 `

@@ -16,6 +16,7 @@ import {
   SectionBody,
   SectionHeader,
   ShoppingCartSection,
+  SelectForm,
 } from './styles'
 import { Cart } from '../../components/Cart'
 import { useContext, useEffect, useState } from 'react'
@@ -24,7 +25,10 @@ import {
   ShoppingCartCoffeeContext,
 } from '../../contexts/CoffeeContext'
 import { useForm } from 'react-hook-form'
+import { ErrorMessage } from '@hookform/error-message'
 import { useNavigate } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 
 interface OrderCoffeeProps {
   CEP: string
@@ -41,12 +45,38 @@ interface OrderCoffeeProps {
 [ ]retirar os erros, 
 [ ]validar o formulário
 [ ]bloquear o botão de confirmar o pedido
-[ ] colocar as compras nos cooks
+[ ] colocar as compras nos cookies
 [ ]limpeza no código
+[ ] impossibilitar o selecionamento dos elementos da tela 
 */
 
+const addressAndPaymentSchema = zod.object({
+  cep: zod.string().length(8, 'Informe um CEP válido'),
+  bairro: zod.string().min(1, 'Informe um Bairro'),
+  cidade: zod.string().min(1, 'Informe a Cidade'),
+  complemento: zod.string().optional(),
+  numero: zod.string().min(1, 'Informe o Número da residencia'),
+  rua: zod.string().min(1, 'Informe a endereço da Rua'),
+  uf: zod.string().length(2, 'Selecione o estado da residencia'),
+  formaPagamento: zod.string(),
+})
+
+type AddressAndPaymentOrderCoffeeDAta = zod.infer<
+  typeof addressAndPaymentSchema
+>
+
 export function Checkout() {
-  const { register, handleSubmit, watch, reset } = useForm()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<AddressAndPaymentOrderCoffeeDAta>({
+    resolver: zodResolver(addressAndPaymentSchema),
+  })
+
+  // console.log('formState', formState.errors)
 
   const { shoppingCart, coffeeLists, orderCoffeeFinalized } = useContext(
     ShoppingCartCoffeeContext,
@@ -66,11 +96,11 @@ export function Checkout() {
     setTotalQuantity(total)
   }, [shoppingCart])
 
-  function handleOrderFinalized(data: OrderCoffeeProps) {
+  function handleOrderFinalized(data: AddressAndPaymentOrderCoffeeDAta) {
     const orderFinalized: OrderFinalizedProps = {
       id: String(new Date().getTime()),
       OrderCoffee: shoppingCart,
-      cep: data.CEP,
+      cep: data.cep,
       address: data.rua,
       number: data.numero,
       complement: data.complemento,
@@ -97,6 +127,24 @@ export function Checkout() {
   function formatValue(valor: string | number) {
     return valor.toString().replace('.', ',')
   }
+
+  function isSubmitDisabled() {
+    if (
+      // watch('formaPagamento') &&
+      shoppingCart.length > 0
+      // &&
+      // watch('rua') &&
+      // watch('numero') &&
+      // watch('bairro')
+    ) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  console.log(errors)
+
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleOrderFinalized)}>
       <div>
@@ -113,25 +161,29 @@ export function Checkout() {
           </SectionHeader>
           <FormSection>
             <InputForm
-              type="number"
+              type="text"
               placeholder="CEP"
               variant="12.5rem"
-              {...register('CEP')}
+              maxLength={8}
+              {...register('cep')}
             />
+            <ErrorMessage errors={errors} name="cep" />
             <InputForm
               type="text"
               placeholder="Rua"
               variant="100%"
               {...register('rua')}
             />
+            <ErrorMessage errors={errors} name="rua" />
             <div>
               <InputForm
-                type="number"
+                type="text"
                 placeholder="Número"
                 maxLength={5}
                 variant="6rem"
                 {...register('numero')}
               />
+              <ErrorMessage errors={errors} name="numero" />
               <div>
                 <InputForm
                   type="text"
@@ -139,6 +191,7 @@ export function Checkout() {
                   variant="100%"
                   {...register('complemento')}
                 />
+                <ErrorMessage errors={errors} name="complemento" />
                 <p>Opcional</p>
               </div>
             </div>
@@ -149,25 +202,22 @@ export function Checkout() {
                 variant="12.5rem"
                 {...register('bairro')}
               />
+              <ErrorMessage errors={errors} name="bairro" />
               <InputForm
                 type="text"
                 placeholder="Cidade"
                 variant="100%"
                 {...register('cidade')}
               />
-              <InputForm
-                type="text"
-                placeholder="UF"
-                maxLength={2}
-                variant="4rem"
-                list="UF-suggestions"
-                {...register('uf')}
-              />
-              <datalist id="UF-suggestions">
-                <option value="BA" />
-                <option value="SP" />
-                <option value="RJ" />
-              </datalist>
+              <ErrorMessage errors={errors} name="cidade" />
+              <SelectForm variant="12.5rem" {...register('uf')}>
+                <option defaultChecked>UF</option>
+                <option value={'AC'}>AC</option>
+                <option value={'BA'}>BA</option>
+                <option value={'MG'}>MG</option>
+                <option value={'SP'}>SP</option>
+              </SelectForm>
+              <ErrorMessage errors={errors} name="uf" />
             </div>
           </FormSection>
         </SectionBody>
@@ -250,7 +300,7 @@ export function Checkout() {
             </p>
           </InformationPaymentSection>
           {/* o botão somente estará habilitado se o formulário de entrega, o pagamento e o carrinho estiveram preenchidos  */}
-          <ButtonPaymentSection type="submit">
+          <ButtonPaymentSection type="submit" disabled={isSubmitDisabled()}>
             Confirmar Pedido
           </ButtonPaymentSection>
         </ShoppingCartSection>

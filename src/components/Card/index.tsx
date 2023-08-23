@@ -13,6 +13,7 @@ import {
 import { Counter } from '../Counter'
 import { useContext, useState } from 'react'
 import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
+
 interface CardProps {
   id: number
   img: string
@@ -59,7 +60,7 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
 
   return (
     <CardContainer>
-      <img src={`src/assets/coffees/${img}`} alt="" />
+      <img src={`../../assets/coffees/${img}`} alt="" />
       <CategoryContainer>
         {tags.map((tag) => {
           return <Category key={tag.content}>{tag.content}</Category>

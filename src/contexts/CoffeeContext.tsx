@@ -64,7 +64,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 3,
-      img: 'expresso_cremoso.png',
+      img: 'src/assets/coffees/expresso_cremoso.png',
       tags: [{ content: 'tradicional' }],
       name: 'Expresso Cremoso',
       description: 'Café expresso tradicional com espuma cremosa',
@@ -72,7 +72,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 4,
-      img: 'cafe_gelado.png',
+      img: 'src/assets/coffees/cafe_gelado.png',
       tags: [{ content: 'tradicional' }, { content: 'gelado' }],
       name: 'Expresso Gelado',
       description: 'Bebida preparada com café expresso e cubos de gelo',
@@ -80,7 +80,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 5,
-      img: 'cafe_com_leite.png',
+      img: 'src/assets/coffees/cafe_com_leite.png',
       tags: [{ content: 'tradicional' }, { content: 'com leite' }],
       name: 'Café com Leite',
       description: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -88,7 +88,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 6,
-      img: 'latte.png',
+      img: 'src/assets/coffees/latte.png',
       tags: [{ content: 'tradicional' }, { content: 'com leite' }],
       name: 'Latte',
       description:
@@ -97,7 +97,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 7,
-      img: 'capuccino.png',
+      img: 'src/assets/coffees/capuccino.png',
       tags: [{ content: 'tradicional' }, { content: 'com leite' }],
       name: 'Capuccino',
       description:
@@ -106,7 +106,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 8,
-      img: 'macchiato.png',
+      img: 'src/assets/coffees/macchiato.png',
       tags: [{ content: 'tradicional' }, { content: 'com leite' }],
       name: 'Macchiato',
       description:
@@ -115,7 +115,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 9,
-      img: 'mocaccino.png',
+      img: 'src/assets/coffees/mocaccino.png',
       tags: [{ content: 'tradicional' }, { content: 'com leite' }],
       name: 'Mocaccino',
       description: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -123,7 +123,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 10,
-      img: 'chocolate_quente.png',
+      img: 'src/assets/coffees/chocolate_quente.png',
       tags: [{ content: 'especial' }, { content: 'com leite' }],
       name: 'Chocolate Quente',
       description:
@@ -132,7 +132,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 11,
-      img: 'cubano.png',
+      img: 'src/assets/coffees/cubano.png',
       tags: [
         { content: 'especial' },
         { content: 'alcoólico' },
@@ -145,7 +145,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 12,
-      img: 'havaiano.png',
+      img: 'src/assets/coffees/havaiano.png',
       tags: [{ content: 'especial' }],
       name: 'Havaiano',
       description: 'Bebida adocicada preparada com café e leite de coco',
@@ -153,7 +153,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 13,
-      img: 'arabe.png',
+      img: 'src/assets/coffees/arabe.png',
       tags: [{ content: 'especial' }],
       name: 'Árabe',
       description: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -161,7 +161,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 14,
-      img: 'irlandes.png',
+      img: 'src/assets/coffees/irlandes.png',
       tags: [{ content: 'especial' }, { content: 'alcoólico' }],
       name: 'Irlandês',
       description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',

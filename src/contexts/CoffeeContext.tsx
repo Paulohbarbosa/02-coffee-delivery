@@ -48,7 +48,7 @@ export function CoffeeContextProvider({
   const coffeeLists = [
     {
       id: 1,
-      img: '../../assets/coffees/expresso.png',
+      img: 'src/assets/coffees/expresso.png',
       tags: [{ content: 'tradicional' }],
       name: 'Expresso Tradicional',
       description: 'O tradicional café feito com água quente e grãos moídos',

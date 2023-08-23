@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
+import expressoTradicional from '../assets/coffees/expresso.png'
 
 export interface OrderCartProps {
   id: number
@@ -48,7 +49,7 @@ export function CoffeeContextProvider({
   const coffeeLists = [
     {
       id: 1,
-      img: 'expresso.png',
+      img: expressoTradicional,
       tags: [{ content: 'tradicional' }],
       name: 'Expresso Tradicional',
       description: 'O tradicional café feito com água quente e grãos moídos',

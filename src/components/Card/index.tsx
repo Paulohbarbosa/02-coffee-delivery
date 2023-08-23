@@ -65,10 +65,7 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
     <CardContainer>
       {/* <img src={`src/assets/coffees/${img}`} alt="" /> */}
       {/* <img src={img} alt="coffee" /> */}
-      <img
-        src={`../../../public/coffees/${img}`}
-        alt={`imagem da xícara de café ${name}`}
-      />
+      <img src={img} alt={`imagem da xícara de café ${name}`} />
       <CategoryContainer>
         {tags.map((tag) => {
           return <Category key={tag.content}>{tag.content}</Category>

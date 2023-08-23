@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import expressoTradicional from '../assets/coffees/expresso.png'
+import expressoTradicional from '../../public/coffees/expresso.png'
+import americano from '../assets/coffees/americano.png'
 
 export interface OrderCartProps {
   id: number

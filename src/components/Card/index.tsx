@@ -13,8 +13,6 @@ import {
 import { Counter } from '../Counter'
 import { useContext, useState } from 'react'
 import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
-import coffeeAmericano from '../../assets/coffees/americano.png'
-
 interface CardProps {
   id: number
   img: string

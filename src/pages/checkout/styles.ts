@@ -55,8 +55,6 @@ export const SectionBody = styled.div`
   border-radius: 0.375rem;
   background-color: ${(props) => props.theme['base-card']};
   margin-bottom: 0.75rem;
-
-  /* z-index: -1; */
 `
 export const FormSection = styled.div`
   width: 100%;
@@ -168,9 +166,9 @@ const Select = styled.div`
 export const SelectInputPayment = styled(Select)`
   padding: 1rem;
   position: relative;
-  //expande o input e coloca encima do objeto pai e deixa invisível
+
   input {
-    all: unset; //comente esta parte e veja o input no elemento
+    all: unset;
     position: absolute;
     width: 100%;
     height: 100%;

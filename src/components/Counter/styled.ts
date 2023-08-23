@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 
 export const CounterContainer = styled.div`
-  /* height: 38px; */
   width: 72px;
   display: flex;
   flex-direction: row;

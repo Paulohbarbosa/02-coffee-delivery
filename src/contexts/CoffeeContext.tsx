@@ -215,8 +215,6 @@ export function CoffeeContextProvider({
   }
 
   useEffect(() => {
-    // console.log('no carrinho de compras temos ', shoppingCart)
-    // console.log('no pedido finalizado temos ', orderFinalized)
     setShoppingCart([])
   }, [orderFinalized])
 

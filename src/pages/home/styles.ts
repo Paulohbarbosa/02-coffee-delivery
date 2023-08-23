@@ -2,10 +2,6 @@ import { styled } from 'styled-components'
 
 import back from '../../assets/Background.svg'
 
-// export const HomeContainer = styled.body`
-//   padding: 5.8rem 10rem;
-// `
-
 export const IntroContainer = styled.div`
   margin-top: 8rem;
   display: flex;

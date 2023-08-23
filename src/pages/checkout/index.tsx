@@ -36,7 +36,6 @@ import * as zod from 'zod'
 [x]bloquear o botão de confirmar o pedido
 [x]corrigir a renderização do carrinho usando map no carrinho de compras e o finder na lista de café
 [x] impedir que seja adicionado mais que 9 unidades do mesmo café no carrinho
-[ ] colocar as compras nos storage
 [ ]limpeza no código
 [x]impossibilitar o selecionamento dos elementos da tela
 [x] máscara no campo de CEP

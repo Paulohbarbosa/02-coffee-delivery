@@ -65,7 +65,8 @@ export function Home() {
               <Card
                 key={coffee.id}
                 id={coffee.id}
-                img={`src/assets/coffees/${coffee.img}`}
+                // img={`src/assets/coffees/${coffee.img}`}
+                img={coffee.img}
                 name={coffee.name}
                 tags={coffee.tags}
                 description={coffee.description}

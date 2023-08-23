@@ -14,9 +14,9 @@ import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
 interface CartProps {
   id: number
   img: string
-  name: string
+  name?: string
   amountValue: number
-  value: string
+  value?: string
 }
 
 export function Cart({ id, img, name, amountValue, value }: CartProps) {

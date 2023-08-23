@@ -2,9 +2,6 @@ import { ReactNode, createContext, useEffect, useState } from 'react'
 
 export interface OrderCartProps {
   id: number
-  img: string
-  name: string
-  value: string
   amount: number
 }
 interface CoffeeListsProps {
@@ -15,11 +12,6 @@ interface CoffeeListsProps {
   description: string
   value: string
 }
-interface changedOrder {
-  id: number
-  amount: number
-}
-
 export interface OrderFinalizedProps {
   id: string
   OrderCoffee: OrderCartProps[]
@@ -32,10 +24,9 @@ export interface OrderFinalizedProps {
   uf: string
   paymentOrder: string
 }
-
 interface ShoppingCartTypes {
   newOrderCoffee: (orderCoffee: OrderCartProps) => void
-  changeOrderAmount: (orderCoffee: changedOrder) => void
+  changeOrderAmount: (orderCoffee: OrderCartProps) => void
   deleteOrderCoffee: (id: number) => void
   orderCoffeeFinalized: (purchase: OrderFinalizedProps) => void
   coffeeLists: CoffeeListsProps[]
@@ -183,7 +174,7 @@ export function CoffeeContextProvider({
 
   const [shoppingCart, setShoppingCart] = useState<OrderCartProps[]>([])
 
-  function changeOrderAmount(changedOrder: changedOrder) {
+  function changeOrderAmount(changedOrder: OrderCartProps) {
     setShoppingCart((state) =>
       state.map((order) => {
         if (order.id === changedOrder.id) {
@@ -207,9 +198,6 @@ export function CoffeeContextProvider({
     if (isCoffeeOrderInShoppingCart) {
       const newOrderCoffee: OrderCartProps = {
         id: newOrder.id,
-        img: newOrder.img,
-        name: newOrder.name,
-        value: newOrder.value,
         amount: isCoffeeOrderInShoppingCart.amount + newOrder.amount,
       }
       const isNewListShoppingCart = shoppingCart.filter(
@@ -228,7 +216,7 @@ export function CoffeeContextProvider({
 
   useEffect(() => {
     // console.log('no carrinho de compras temos ', shoppingCart)
-    console.log('no pedido finalizado temos ', orderFinalized)
+    // console.log('no pedido finalizado temos ', orderFinalized)
     setShoppingCart([])
   }, [orderFinalized])
 

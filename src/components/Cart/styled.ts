@@ -6,6 +6,7 @@ export const CartContainer = styled.div`
   padding: 0.5rem 0.25rem;
   justify-content: space-between;
   align-items: flex-start;
+
   img {
     width: 4rem;
     height: auto;
@@ -24,6 +25,7 @@ export const ButtonCart = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  user-select: none;
 
   border: 1px solid transparent; //para não dá o pulinho quando selecionado
   border-radius: 0.375rem;
@@ -65,4 +67,5 @@ export const CartTotal = styled.div`
   font-family: 'Roboto';
   font-size: 1rem;
   font-weight: 700;
+  user-select: none;
 `

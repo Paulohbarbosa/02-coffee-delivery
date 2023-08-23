@@ -30,28 +30,20 @@ import { useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
-interface OrderCoffeeProps {
-  CEP: string
-  bairro: string
-  cidade: string
-  complemento: string
-  numero: string
-  rua: string
-  uf: string
-  formaPagamento: string
-}
-
 /* INFO: falta
-[ ]retirar os erros, 
-[ ]validar o formulário
-[ ]bloquear o botão de confirmar o pedido
-[ ] colocar as compras nos cookies
+[x]retirar os erros, 
+[x]validar o formulário
+[x]bloquear o botão de confirmar o pedido
+[x]corrigir a renderização do carrinho usando map no carrinho de compras e o finder na lista de café
+[x] impedir que seja adicionado mais que 9 unidades do mesmo café no carrinho
+[ ] colocar as compras nos storage
 [ ]limpeza no código
-[ ] impossibilitar o selecionamento dos elementos da tela 
+[x]impossibilitar o selecionamento dos elementos da tela
+[x] máscara no campo de CEP
 */
 
 const addressAndPaymentSchema = zod.object({
-  cep: zod.string().length(8, 'Informe um CEP válido'),
+  cep: zod.string().length(10, 'Informe um CEP válido'),
   bairro: zod.string().min(1, 'Informe um Bairro'),
   cidade: zod.string().min(1, 'Informe a Cidade'),
   complemento: zod.string().optional(),
@@ -75,8 +67,6 @@ export function Checkout() {
   } = useForm<AddressAndPaymentOrderCoffeeDAta>({
     resolver: zodResolver(addressAndPaymentSchema),
   })
-
-  // console.log('formState', formState.errors)
 
   const { shoppingCart, coffeeLists, orderCoffeeFinalized } = useContext(
     ShoppingCartCoffeeContext,
@@ -130,12 +120,11 @@ export function Checkout() {
 
   function isSubmitDisabled() {
     if (
-      // watch('formaPagamento') &&
-      shoppingCart.length > 0
-      // &&
-      // watch('rua') &&
-      // watch('numero') &&
-      // watch('bairro')
+      watch('formaPagamento') &&
+      shoppingCart.length > 0 &&
+      watch('rua') &&
+      watch('numero') &&
+      watch('bairro')
     ) {
       return false
     } else {
@@ -143,7 +132,12 @@ export function Checkout() {
     }
   }
 
-  console.log(errors)
+  function handleMask(e: React.FormEvent<HTMLInputElement>) {
+    let value = e.currentTarget.value
+    value = value.replace(/\D/g, '') // limpamos a digitação
+    value = value.replace(/^(\d{2})(\d{3})(\d{3})$/, '$1.$2-$3') // adiciona a pontuação
+    e.currentTarget.value = value
+  }
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleOrderFinalized)}>
@@ -165,6 +159,7 @@ export function Checkout() {
               placeholder="CEP"
               variant="12.5rem"
               maxLength={8}
+              onKeyUp={handleMask}
               {...register('cep')}
             />
             <ErrorMessage errors={errors} name="cep" />
@@ -267,18 +262,17 @@ export function Checkout() {
       <div>
         <h1>Cafés selecionados</h1>
         <ShoppingCartSection>
-          {/* tem que pegar os dados do carrinho */}
           {shoppingCart.map((cart) => {
-            // const order = coffeeLists.find((coffee) => coffee.id === cart.id) // o elemento pode retornar underfinder é por isso que o typescript está dando erro
-            // console.log(order)
+            const order = coffeeLists.find((coffee) => {
+              return coffee.id === cart.id
+            })
             return (
               <Cart
                 key={cart.id}
                 id={cart.id}
-                // img={`src/assets/coffees/${cart.img}`} //quando resolver o problema com o order
-                img={cart.img}
-                name={cart.name}
-                value={cart.value}
+                img={`src/assets/coffees/${order?.img}`}
+                name={order?.name}
+                value={order?.value}
                 amountValue={cart.amount}
               />
             )
@@ -299,7 +293,6 @@ export function Checkout() {
               </strong>
             </p>
           </InformationPaymentSection>
-          {/* o botão somente estará habilitado se o formulário de entrega, o pagamento e o carrinho estiveram preenchidos  */}
           <ButtonPaymentSection type="submit" disabled={isSubmitDisabled()}>
             Confirmar Pedido
           </ButtonPaymentSection>

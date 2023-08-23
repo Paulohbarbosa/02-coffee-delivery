@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
+  user-select: none;
 
   img {
     margin-top: -50px;
@@ -98,5 +99,10 @@ export const ButtonBuy = styled.button`
 
   &:hover {
     background-color: ${(props) => props.theme.purple};
+  }
+  &:disabled {
+    background: ${(props) => props.theme['purple-light']};
+    color: ${(props) => props.theme['base-hover']};
+    cursor: no-drop;
   }
 `

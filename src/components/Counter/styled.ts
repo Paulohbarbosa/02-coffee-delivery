@@ -13,6 +13,8 @@ export const CounterContainer = styled.div`
   border-radius: 6px;
   background-color: ${(props) => props.theme['base-button']};
 
+  user-select: none;
+
   label {
     width: 1rem;
     font-family: 'Roboto', sans-serif;

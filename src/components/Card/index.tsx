@@ -23,7 +23,7 @@ interface CardProps {
 }
 
 export function Card({ id, img, tags, name, description, value }: CardProps) {
-  const { newOrderCoffee } = useContext(ShoppingCartCoffeeContext)
+  const { newOrderCoffee, shoppingCart } = useContext(ShoppingCartCoffeeContext)
 
   const [amount, setAmount] = useState(1)
 
@@ -41,13 +41,20 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
   function handleNewOrderCoffee() {
     const orderCoffee = {
       id,
-      img,
-      name,
-      value,
       amount,
     }
     newOrderCoffee(orderCoffee)
-    setAmount(0)
+    setAmount(1)
+  }
+
+  function isButtonBuyDisabled() {
+    const coffee = shoppingCart.find((coffeeAmount) => coffeeAmount.id === id)
+    const AmountCoffee = coffee?.amount === undefined ? 0 : coffee.amount
+    if (AmountCoffee + amount <= 9) {
+      return false
+    } else {
+      return true
+    }
   }
 
   return (
@@ -71,7 +78,11 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
             handleCounterPlus={plus}
             handleCounterMinus={minus}
           />
-          <ButtonBuy name="carrinho" onClick={handleNewOrderCoffee}>
+          <ButtonBuy
+            name="carrinho"
+            onClick={handleNewOrderCoffee}
+            disabled={isButtonBuyDisabled()}
+          >
             <ShoppingCartSimple size={22} weight="fill" />
           </ButtonBuy>
         </CounterBuyContainer>

@@ -7,7 +7,7 @@ https://ignite-02-coffee-delivery.netlify.app/
 O Coffee-Delivery é um projeto e desafio 02 desenvolvido no curso **Ignite Rocketseat**.
 
 Neste foi proposto utilizando os fundamentos do ReactJs:
-- Listagem de produtos (cafés) disponíveis para compra;
+- Listagem de produtos (cafés) disponíveis para compra, consumindo uma API;
 - Adicionar uma quantidade específicas de itens no carrinho;
 - Aumentar ou remover a quantidade de itens no carrinho;
 - Formulário para o usuário preencher o seu endereço;
@@ -20,9 +20,11 @@ https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate
 
 ## Layout web desenvolvido
 
-<img alt="rocketpay" src="./src/assets/imgs-Readme/todo-list-2.png" width="100%">
+<img alt="" src="./public/part01.gif" width="100%">
 
-<img alt="rocketpay" src="./src/assets/imgs-Readme/todo-list-1.png" width="100%">
+<img alt="" src="./public/part02.gif" width="100%">
+
+<img alt="" src="./public/part03.gif" width="100%">
 
 ## Tecnologias utilizadas
 - HTML / CSS / TypeScript
@@ -30,14 +32,15 @@ https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate
 - Vite
 - phosphor-icons/react
 - zod
-- 
+- Styled-components
 
 ## Funcionalidades
 - Estados;
 - Imutabilidade do estado;
 - Listas e chaves no ReactJS;
 - Propriedades;
-- Componentização.
+- Componentização;
+
 
 - ContextAPI
 - LocalStorage

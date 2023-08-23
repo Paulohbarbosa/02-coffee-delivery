@@ -60,7 +60,7 @@ export function Card({ id, img, tags, name, description, value }: CardProps) {
 
   return (
     <CardContainer>
-      <img src={`../../assets/coffees/${img}`} alt="" />
+      <img src={`./src/assets/coffees/${img}`} alt="" />
       <CategoryContainer>
         {tags.map((tag) => {
           return <Category key={tag.content}>{tag.content}</Category>

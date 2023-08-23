@@ -13,7 +13,7 @@ import { ShoppingCartCoffeeContext } from '../../contexts/CoffeeContext'
 
 interface CartProps {
   id: number
-  img: string
+  img: string | undefined
   name?: string
   amountValue: number
   value?: string

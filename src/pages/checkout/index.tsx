@@ -269,7 +269,7 @@ export function Checkout() {
               <Cart
                 key={cart.id}
                 id={cart.id}
-                img={`src/assets/coffees/${order?.img}`}
+                img={order?.img}
                 name={order?.name}
                 value={order?.value}
                 amountValue={cart.amount}

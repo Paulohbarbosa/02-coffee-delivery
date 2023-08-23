@@ -48,7 +48,7 @@ export function CoffeeContextProvider({
   const coffeeLists = [
     {
       id: 1,
-      img: 'src/assets/coffees/expresso.png',
+      img: '../src/assets/coffees/expresso.png',
       tags: [{ content: 'tradicional' }],
       name: 'Expresso Tradicional',
       description: 'O tradicional café feito com água quente e grãos moídos',
@@ -56,7 +56,7 @@ export function CoffeeContextProvider({
     },
     {
       id: 2,
-      img: 'src/assets/coffees/americano.png',
+      img: '../../assets/coffees/americano.png',
       tags: [{ content: 'tradicional' }],
       name: 'Expresso Americano',
       description: 'Expresso diluído, menos intenso que o tradicional',

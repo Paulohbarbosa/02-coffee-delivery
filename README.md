@@ -40,10 +40,9 @@ https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate
 - Listas e chaves no ReactJS;
 - Propriedades;
 - Componentização;
-
-
 - ContextAPI
-- LocalStorage
+
+- LocalStorage 
 
 # Como executar o projeto
 

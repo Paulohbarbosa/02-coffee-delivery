@@ -187,7 +187,17 @@ export function CoffeeContextProvider({
     [],
   )
 
-  const [shoppingCart, setShoppingCart] = useState<OrderCartProps[]>([])
+  const [shoppingCart, setShoppingCart] = useState<OrderCartProps[]>(() => {
+    const storageValue = localStorage.getItem(
+      '@ignite-coffeeDelivery:Coffee-Order-1.0.0',
+    )
+    if (storageValue) {
+      return JSON.parse(storageValue)
+    } else {
+      return []
+    }
+  })
+  console.log(shoppingCart)
 
   function changeOrderAmount(changedOrder: OrderCartProps) {
     setShoppingCart((state) =>
@@ -200,6 +210,13 @@ export function CoffeeContextProvider({
       }),
     )
   }
+
+  useEffect(() => {
+    localStorage.setItem(
+      '@ignite-coffeeDelivery:Coffee-Order-1.0.0',
+      JSON.stringify(shoppingCart),
+    )
+  }, [shoppingCart])
 
   function deleteOrderCoffee(id: number) {
     const newList = shoppingCart.filter((order) => order.id !== id)
@@ -227,11 +244,8 @@ export function CoffeeContextProvider({
 
   function orderCoffeeFinalized(purchase: OrderFinalizedProps) {
     setOrderFinalized((state) => [...state, purchase])
-  }
-
-  useEffect(() => {
     setShoppingCart([])
-  }, [orderFinalized])
+  }
 
   return (
     <ShoppingCartCoffeeContext.Provider

@@ -197,7 +197,6 @@ export function CoffeeContextProvider({
       return []
     }
   })
-  console.log(shoppingCart)
 
   function changeOrderAmount(changedOrder: OrderCartProps) {
     setShoppingCart((state) =>

@@ -54,7 +54,7 @@ git clone https://github.com/Paulohbarbosa/02-coffee-delivery.git
 # entrar na pasta do projeto raiz e instale as dependências
 npm install
 
-# executar o projeto
+# executar o projeto e sem seguida clique no endereço que foi exibido no seu promt
 npm rum dev
 ```
 

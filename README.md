@@ -33,6 +33,7 @@ https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate
 - phosphor-icons/react
 - zod
 - Styled-components
+- Radix
 
 ## Funcionalidades
 - Estados;

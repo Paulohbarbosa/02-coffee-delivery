@@ -228,30 +228,24 @@ export function Checkout() {
             </p>
           </SectionHeader>
           <PaymentSection>
-            <SelectInputPayment>
-              <input
-                type="radio"
-                value="Cartão de Crédito"
-                {...register('formaPagamento')}
-              />
+            <SelectInputPayment
+              value="Cartão de credito"
+              {...register('formaPagamento')}
+            >
               <CreditCard size={16} />
               <span>cartão de crédito </span>
             </SelectInputPayment>
-            <SelectInputPayment>
-              <input
-                type="radio"
-                value="Cartão de Débito"
-                {...register('formaPagamento')}
-              />
+            <SelectInputPayment
+              value="Cartão de debito"
+              {...register('formaPagamento')}
+            >
               <Bank size={16} />
               <span>cartão de débito</span>
             </SelectInputPayment>
-            <SelectInputPayment>
-              <input
-                type="radio"
-                value="Dinheiro"
-                {...register('formaPagamento')}
-              />
+            <SelectInputPayment
+              value="Dinheiro"
+              {...register('formaPagamento')}
+            >
               <Money size={16} />
               <span>Dinheiro </span>
             </SelectInputPayment>

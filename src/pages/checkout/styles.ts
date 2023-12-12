@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import * as RadioGroup from '@radix-ui/react-radio-group'
 
 export const CheckoutContainer = styled.form`
   margin-top: 2.5rem;
@@ -44,6 +45,7 @@ export const SectionHeader = styled.div<IconsProps>`
     color: ${(props) => props.theme['base-text']};
   }
 `
+// seção de Endereço
 export const SectionBody = styled.div`
   display: flex;
   padding: 2.5rem;
@@ -143,67 +145,6 @@ export const SelectForm = styled.select<InputProps>`
   }
 `
 
-const Select = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-
-  border: 1px solid transparent; //para não dá o pulinho quando selecionado
-  border-radius: 0.375rem;
-  background-color: ${(props) => props.theme['base-button']};
-  box-shadow: none;
-
-  text-transform: uppercase;
-  font-family: 'Roboto';
-  font-size: 0.75rem;
-  font-weight: 400;
-
-  svg {
-    color: ${(props) => props.theme.purple};
-  }
-`
-export const SelectInputPayment = styled(Select)`
-  padding: 1rem;
-  position: relative;
-
-  input {
-    all: unset;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 0.375rem;
-  }
-  // poderia envolver os dois elementos em uma elemento pai para não repetir o código (mas estou com preguiça)
-  svg {
-    pointer-events: none; // informa que a intenção do click do mouse não é neste elemento, mas no que está logo abaixo
-    user-select: none; // impede que o elemento seja selecionado
-    z-index: 1;
-  }
-  span {
-    pointer-events: none;
-    user-select: none;
-    z-index: 1;
-  }
-  &:hover {
-    background-color: ${(props) => props.theme['base-hover']};
-  }
-
-  input[type='radio']:checked {
-    box-shadow: none;
-    background-color: ${(props) => props.theme['purple-light']};
-    border: 1px solid ${(props) => props.theme.purple};
-  }
-`
-
-export const PaymentSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-`
-
 export const ShoppingCartSection = styled.div`
   display: flex;
   padding: 2.5rem;
@@ -240,6 +181,50 @@ export const InformationPaymentSection = styled.div`
     strong {
       font-size: 1.25rem;
     }
+  }
+`
+// seção de pagamento
+
+export const PaymentSection = styled(RadioGroup.Root)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 3.5rem;
+`
+export const SelectInputPayment = styled(RadioGroup.Item)`
+  padding: 1rem;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  background-color: ${(props) => props.theme['base-button']};
+  box-shadow: none;
+
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-size: 0.75rem;
+  font-weight: 400;
+
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
+  &:hover {
+    transition: background-color 0.2s;
+    background-color: ${(props) => props.theme['base-hover']};
+  }
+
+  &[data-state='checked'] {
+    box-shadow: none;
+    background-color: ${(props) => props.theme['purple-light']};
+    border: 1px solid ${(props) => props.theme.purple};
+    font-weight: bold;
   }
 `
 export const ButtonPaymentSection = styled.button`

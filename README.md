@@ -1,4 +1,4 @@
-# 02-coffee-delivery
+# Coffee-delivery
  
 ## Sobre o projeto
 

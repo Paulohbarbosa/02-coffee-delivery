@@ -5,7 +5,7 @@
 
 ![Static Badge](https://img.shields.io/badge/Rocketseat%20-%20Desafio%20Prático-%237159c1?style=for-the-badge)
 
-![Static Badge](https://img.shields.io/badge/License%20-%20mit-%?style=for-the-badge)
+[![PyPi license](https://badgen.net/pypi/license/pip/)](https://pypi.org/project/pip/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f1e90cbc-5e7f-4e72-9433-69bb5e5b17f7/deploy-status)](https://app.netlify.com/sites/ignite-02-coffee-delivery/deploys)
 <h4 align="center"> 
@@ -25,14 +25,11 @@ Neste foi proposto utilizando as seguintes funcionalidades:
 - Exibir o total de itens no carrinho no Header;
 - Exibir o valor total da soma de itens no carrinho multiplicados pelo valor;
 
-<div align="center"> 
+### Projeto Publicado
+<a href="https://ignite-02-coffee-delivery.netlify.app/"> <img height="100" src="./public/miniatura/telaInicialSite.png"/></a>
 
-<a href="https://ignite-02-coffee-delivery.netlify.app/"> <img height="100" src="./public/miniatura/telaInicialSite.png"/>
-<p>Projeto Publicado</p></a>
-
-<a href="https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate"> <img height="100" src="./public/miniatura/logo Coffee Delivery.png"/>
-<p>Projeto no Figma</p></a>
-</div>
+### Projeto no Figma
+<a href="https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery/duplicate"> <img height="100" src="./public/miniatura/logo Coffee Delivery.png"/></a>
 
 ## Layout web desenvolvido
 
